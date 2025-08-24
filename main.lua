@@ -61,7 +61,7 @@ function snake_collision()
     end
     
     --checks out if bounds
-    if snake[1].x<0 or snake[1].x>11 or snake[1].y<0 or snake[1].y>7 then
+    if snake[1].x<0 or snake[1].x>15 or snake[1].y<0 or snake[1].y>11 then
         game_reset()
     end
 end
@@ -84,28 +84,30 @@ function apple_make()
         return false
     end
     
-    apple.x = math.random(11)
-    apple.y = math.random(7)
+    apple.x = math.random(15)
+    apple.y = math.random(11)
     
     while position_included(avoid_place, {x=apple.x, y=apple.y}) do
-        apple.x = math.random(11)
-        apple.y = math.random(7)
+        apple.x = math.random(15)
+        apple.y = math.random(11)
     end
 end
 
 --resets the current game
 function game_reset()
     snake = {
-        [1] = {x=6, y=4, r=0, g=255, b=0, w=75, h=75}
+        [1] = {x=6, y=4, r=0, g=255, b=0, w=40, h=40}
     }
     apple = {
-        x=2, y=2, r=255, g=0, b=0, w=75, h=75
+        x=2, y=2, r=255, g=0, b=0, w=40, h=40
     }
     game.current_score = 1
     game.input_last = "none"
     game.snake_dx = 0
     game.snake_dy = 0
 end
+
+--================
 
 function love.keypressed(key)
     --game control
@@ -126,10 +128,10 @@ end
 function love.load()
     --define tables
     snake = {
-        [1] = {x=6, y=4, r=0, g=255, b=0, w=75, h=75}
+        [1] = {x=6, y=4, r=0, g=255, b=0, w=40, h=40}
     }
     apple = {
-        x=2, y=2, r=255, g=0, b=0, w=75, h=75
+        x=2, y=2, r=255, g=0, b=0, w=40, h=40
     }
     game = {
         current_score=1,
@@ -165,7 +167,7 @@ end
 function love.draw()
     --background
     love.graphics.setColor(30, 30, 30)
-    love.graphics.rectangle("fill", 0, 0, 900, 600)
+    love.graphics.rectangle("fill", 0, 0, 640, 480)
     
     --objects
     for _, i in ipairs(draw_list) do
@@ -175,6 +177,6 @@ function love.draw()
     
     --text
     love.graphics.setColor(255, 255, 255)
-    love.graphics.print("Score: "..tostring(game.current_score), 0, 0, 0, 3, 3)
-    love.graphics.print("Highest Score: "..tostring(game.high_score), 0, 50, 0, 3, 3)
+    love.graphics.print("Score: "..tostring(game.current_score), 0, 0, 0, 2, 2)
+    love.graphics.print("Highest Score: "..tostring(game.high_score), 0, 50, 0, 2, 2)
 end
