@@ -1,3 +1,10 @@
+--[[
+SnakeLUA project
+Coded by NeoFenixLive
+================
+Enjoy my amateur programming! :3
+]]
+
 --moves the snake
 function snake_movement()
     --limits the snake movement
@@ -160,7 +167,7 @@ function love.draw()
     love.graphics.setColor(30, 30, 30)
     love.graphics.rectangle("fill", 0, 0, 900, 600)
     
-    --game objects
+    --objects
     for _, i in ipairs(draw_list) do
         love.graphics.setColor(i.r, i.g, i.b)
         love.graphics.rectangle("fill", i.x*i.w, i.y*i.h, i.w, i.h)
