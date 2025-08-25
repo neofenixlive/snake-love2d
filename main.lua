@@ -49,7 +49,7 @@ function snake_collision()
             game.high_score = game.current_score
         end
         
-        table.insert(snake, {x=-1, y=-1, r=0, g=255, b=0, w=75, h=75})
+        table.insert(snake, {x=-1, y=-1, r=0, g=255, b=0, w=40, h=40})
     end
     
     --checks tail collision
